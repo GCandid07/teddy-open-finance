@@ -36,32 +36,34 @@ export default function WelcomeForm() {
   }
 
   return (
-    <FormProvider {...methods}>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-[480px] mx-auto flex flex-col gap-6 p-6"
-      >
-        <h1 className="text-3xl sm:text-4xl font-semibold text-center">Olá, seja bem-vindo!</h1>
-
-        <Controller
-          name="name"
-          control={control}
-          render={({ field }) => (
-            <NameInput
-              value={field.value}
-              onChange={field.onChange}
-              error={errors.name?.message}
-            />
-          )}
-        />
-
-        <Button
-          type="submit"
-          className="h-10 sm:h-12 text-base sm:text-lg bg-[#EC6724] hover:bg-[#d35a1f] text-white w-full"
+    <div className="min-h-dvh flex items-center justify-center bg-muted">
+      <FormProvider {...methods}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full max-w-[480px] mx-auto flex flex-col gap-6 p-6"
         >
-          Entrar
-        </Button>
-      </form>
-    </FormProvider>
+          <h1 className="text-3xl sm:text-4xl font-semibold text-center">Olá, seja bem-vindo!</h1>
+
+          <Controller
+            name="name"
+            control={control}
+            render={({ field }) => (
+              <NameInput
+                value={field.value}
+                onChange={field.onChange}
+                error={errors.name?.message}
+              />
+            )}
+          />
+
+          <Button
+            type="submit"
+            className="h-10 sm:h-12 text-base sm:text-lg bg-[#EC6724] hover:bg-[#d35a1f] text-white w-full"
+          >
+            Entrar
+          </Button>
+        </form>
+      </FormProvider>
+    </div>
   )
 }

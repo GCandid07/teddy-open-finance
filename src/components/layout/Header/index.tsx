@@ -10,7 +10,6 @@ export function Header() {
 
   return (
     <>
-      {/* <header className="bg-white border-b px-8 py-4 shadow-sm flex items-center justify-between gap-4"> */}
       <header className="relative bg-white border-b px-8 py-4 shadow-sm flex items-center justify-between">
         <div className="flex gap-6">
           <button

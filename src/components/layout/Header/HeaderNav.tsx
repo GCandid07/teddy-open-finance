@@ -1,19 +1,25 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { cn } from "@/lib/utils"
+import { logout } from "@/utils/auth"
 
 export function HeaderNav() {
   const location = useLocation()
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    logout()
+    navigate("/credentials", { replace: true })
+  }
 
   const { pathname } = location
 
   return (
-    // <nav className="hidden md:flex gap-4 flex-1 justify-center">
-    <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex gap-4">
+    <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex gap-8">
       <Link
         to="/"
         className={cn(
           "text-lg",
-          pathname === "/"
+          pathname === "/" || pathname === "/clients"
             ? "text-[#EC6724] underline"
             : "text-muted-foreground hover:text-foreground"
         )}
@@ -22,10 +28,10 @@ export function HeaderNav() {
       </Link>
 
       <Link
-        to="/clients/selected"
+        to="/clients/saved"
         className={cn(
           "text-lg",
-          pathname === "/clients/selected"
+          pathname === "/clients/saved"
             ? "text-[#EC6724] underline"
             : "text-muted-foreground hover:text-foreground"
         )}
@@ -33,12 +39,12 @@ export function HeaderNav() {
         Clientes selecionados
       </Link>
 
-      <Link
-        to="/"
-        className="text-lg text-muted-foreground hover:text-foreground"
+      <button
+        onClick={handleLogout}
+        className="cursor-pointer text-lg text-muted-foreground hover:text-foreground"
       >
         Sair
-      </Link>
+      </button>
     </nav>
   )
 }

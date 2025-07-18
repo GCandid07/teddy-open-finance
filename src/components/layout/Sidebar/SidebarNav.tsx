@@ -1,7 +1,14 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import { routes } from "./sidebar_routes"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, LogOut } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent
+} from "@/components/ui/tooltip"
+import { logout } from "@/utils/auth"
 
 interface SidebarNavProps {
   onClose: () => void
@@ -9,18 +16,42 @@ interface SidebarNavProps {
 
 export function SidebarNav({ onClose }: SidebarNavProps) {
   const location = useLocation()
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    logout()
+    navigate("/credentials", { replace: true })
+  }
 
   return (
     <nav className="relative flex flex-col gap-4 text-sm pl-4 space-y-4 pt-8 bg-white flex-1">
-      <button
-        onClick={onClose}
-        className="absolute -top-6 -right-6 p-4 z-10 rounded-full bg-[#1f1f1f] text-[#1f1f1f] cursor-pointer"
-      >
-        <ArrowLeft className="w-4 h-4 bg-white rounded-full" />
-      </button>
+      <div className="absolute -top-6 -right-6">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={onClose}
+              className="p-4 rounded-full bg-[#1f1f1f] text-[#1f1f1f] cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4 bg-white rounded-full" />
+            </button>
+          </TooltipTrigger>
+
+          <TooltipContent side="right" align="center">
+            Fechar menu
+          </TooltipContent>
+        </Tooltip>
+      </div>
 
       {routes.map((route) => {
-        const isActive = location.pathname === route.path
+        let isActive = location.pathname === route.path
+
+        if (location.pathname === "/" && route.path === "/") {
+          isActive = false
+        }
+
+        if (location.pathname === "/" && route.path === "/clients") {
+          isActive = true
+        }
 
         return (
           <Link
@@ -39,6 +70,17 @@ export function SidebarNav({ onClose }: SidebarNavProps) {
           </Link>
         )
       })}
+
+      <div className="mt-auto py-4 mr-4">
+        <Button
+          variant="outline"
+          className="cursor-pointer pl-2 py-2 font-bold flex items-center justify-start gap-2 transition-colors w-full text-muted-foreground hover:text-foreground"
+          onClick={handleLogout}
+        >
+          <LogOut className="w-5 h-5" />
+          Sair
+        </Button>
+      </div>
     </nav>
   )
 }

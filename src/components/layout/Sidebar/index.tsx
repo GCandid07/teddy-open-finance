@@ -16,11 +16,11 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       )}
     >
       <div
-        className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/20"
         onClick={onClose}
       />
 
-      <aside className="relative z-50 w-64 h-full rounded-tr-2xl bg-black/60 shadow-lg flex flex-col">
+      <aside className="relative z-50 w-64 h-full rounded-tr-2xl bg-black/20 shadow-lg flex flex-col">
         <SidebarHeader />
         <SidebarNav onClose={onClose} />
       </aside>

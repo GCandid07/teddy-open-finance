@@ -12,7 +12,7 @@ export const routes = [
     label: "Clientes",
   },
   {
-    path: "/clients/selected",
+    path: "/clients/saved",
     icon: UserCheck,
     label: "Clientes selecionados",
   },

@@ -34,6 +34,19 @@ A aplicação conta com três telas principais:
 
 ---
 
+## 🗺️ Fluxo da Aplicação
+
+```mermaid
+flowchart TD
+  A[Credenciais] --> B[Clientes]
+  B --> C[Selecionar Clientes]
+  C --> D[Clientes Selecionados]
+  B --> E[Criar, Editar, Remover]
+  D --> F[Remover Todos ou Individual]
+```
+
+---
+
 ## 🧱 Arquitetura
 
 - Aplicação dividida em **Micro-Frontends** utilizando `vite-plugin-federation`.
@@ -41,6 +54,28 @@ A aplicação conta com três telas principais:
   - `teddy-shell`: aplicação container (host)
   - `teddy-auth`: responsável pela autenticação/nome do usuário
   - `teddy-dashboard`: exibição, gerenciamento e seleção de clientes
+
+---
+
+```mermaid
+graph LR
+  subgraph "Shell"
+    A[teddy-shell]
+  end
+
+  subgraph "Auth"
+    B[teddy-auth]
+  end
+
+  subgraph "Dashboard"
+    C[teddy-dashboard]
+  end
+
+  A --> B
+  A --> C
+  B --> C
+  C --> B
+```
 
 ---
 
@@ -57,7 +92,7 @@ A aplicação conta com três telas principais:
 | **Zod** | Validação de formulários |
 | **Docker** | Containerização da aplicação |
 | **Vercel** | Deploy e hospedagem |
-| **npm** | Gerenciador de pacotes eficiente |
+| **NPM** | Gerenciador de pacotes eficiente |
 
 ---
 

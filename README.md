@@ -185,6 +185,16 @@ teddy-open-finance/
 
 ---
 
+## 💡 Próximos passos
+
+- [ ] Adicionar testes unitários para cada microfrontend (`teddy-shell`, `teddy-auth`, `teddy-dashboard`)
+- [ ] Configurar pipeline de CI/CD com GitHub Actions e Vercel
+- [ ] Melhorar tratamento de erros e interfaces de fallback
+- [ ] Implementar carregamento dinâmico (lazy loading) com indicadores visuais
+- [ ] Criar um microfrontend dedicado para o design-system
+
+---
+
 ### Agradeço à equipe da empresa Teddy pela oportunidade de participar do processo e desenvolver esta aplicação!
 
 ---

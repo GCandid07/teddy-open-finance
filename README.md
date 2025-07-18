@@ -1,4 +1,6 @@
-# 🧸 Teddy | Teste Técnico - Front-end Pleno
+# <img width="100" height="49" alt="Logo - Teddy" src="https://github.com/user-attachments/assets/6010c37e-1ab2-482c-ac24-30001f2c542e" />
+# Teddy | Teste Técnico - Front-end Pleno
+
 
 Este repositório contém a solução desenvolvida para o teste técnico de Front-end Pleno da empresa **Teddy**, cujo objetivo foi construir uma aplicação web responsiva, dinâmica e com arquitetura de **micro-frontends**, utilizando **React + Vite + TypeScript**.
 

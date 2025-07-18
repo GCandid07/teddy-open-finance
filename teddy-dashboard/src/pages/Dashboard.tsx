@@ -24,6 +24,7 @@ export default function Dashboard() {
     data,
     page,
     setPage,
+    totalPages,
     isLoading,
     limit,
     setLimit,
@@ -147,7 +148,7 @@ export default function Dashboard() {
       <div className="mt-4">
         <PaginationControl
           currentPage={data?.currentPage ?? page}
-          totalPages={data?.totalPages ?? 1}
+          totalPages={totalPages}
           onPageChange={setPage}
         />
       </div>

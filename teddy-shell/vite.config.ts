@@ -6,8 +6,8 @@ import federation from '@originjs/vite-plugin-federation'
 import path from 'path'
 
 // https://vite.dev/config/
-const DASHBOARD_URL = process.env.VITE_DASHBOARD_URL || ''
-const AUTH_URL = process.env.VITE_AUTH_URL || ''
+const DASHBOARD_URL = process.env.VITE_DASHBOARD_URL || 'http://localhost:5001/assets/remoteEntry.js'
+const AUTH_URL = process.env.VITE_AUTH_URL || 'http://localhost:5002/assets/remoteEntry.js'
 
 export default defineConfig({
   plugins: [

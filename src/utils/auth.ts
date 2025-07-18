@@ -1,3 +1,5 @@
+import { clearSavedClients } from "./clients"
+
 const AUTH_KEY = "authUserName"
 
 export function setAuthUserName(name: string) {
@@ -10,6 +12,7 @@ export function getAuthUserName(): string | null {
 
 export function logout() {
   sessionStorage.removeItem(AUTH_KEY)
+  clearSavedClients()
 }
 
 export function isAuthenticated() {
